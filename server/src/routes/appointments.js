@@ -1,6 +1,6 @@
 import express from 'express';
 import { getAppointements as getValidator, postApp as postValidator } from '../validators/appointments'
-import { publish , channels} from '../services/network'
+import { publish , channels} from '../services/pubsub'
 import * as appointments from '../services/appointments'
 
 const router = express.Router();

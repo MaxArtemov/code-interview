@@ -1,5 +1,5 @@
 import app from './app'
-import { subscribeChannels } from './services/network'
+import { subscribeChannels } from './services/pubsub'
 
 app.listen(process.env.PORT, async () => {
     console.info(`App started on port ${process.env.PORT}`)
