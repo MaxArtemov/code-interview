@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
 import appointmentsRouter from './routes/appointments'
+import providersRouter from './routes/providers'
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/appointments', appointmentsRouter);
+app.use('/providers', providersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

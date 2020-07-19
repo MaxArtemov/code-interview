@@ -1,5 +1,6 @@
 import express from 'express';
 import { getAppointements as getValidator, postApp as postValidator } from '../validators/appointments'
+import { publish , channels} from '../services/network'
 import * as appointments from '../services/appointments'
 
 const router = express.Router();
@@ -22,8 +23,8 @@ router.post('/',
   async function(req, res, next) {
     try {
       const { name, date } = req.body
-      console.log({ name })
       const result = await appointments.setAppointment({ name, date })
+      await publish(channels.NEW_APPOINTMENT, { payload: { name, date } })
       res.json(result)
     } catch (e) {
       next(e)
