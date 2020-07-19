@@ -8,10 +8,10 @@ router.post('/add',
   async function(req, res, next) {
     try {
       const { payload } = req.body
-      console.log(payload)
       await providers.upsertProvider(payload)
       res.sendStatus(200)
     } catch (e) {
+      console.error(e)
       next(e)
   }
 });
